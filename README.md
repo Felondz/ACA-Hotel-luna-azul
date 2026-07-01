@@ -6,7 +6,7 @@ El sistema está desarrollado desde cero aplicando el patrón de arquitectura **
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 1. **Back-End**: PHP (arquitectura orientada a objetos bajo el patrón MVC, PDO para base de datos y sesiones nativas).
 2. **Front-End**: HTML5 semántico, CSS3 personalizado (diseño responsivo con enfoque mate oscuro, sin dependencias externas) y JavaScript (ES6+ para validaciones, AJAX y diálogos interactivos).
@@ -15,7 +15,7 @@ El sistema está desarrollado desde cero aplicando el patrón de arquitectura **
 
 ---
 
-## 📂 Estructura del Proyecto (MVC)
+## Estructura del Proyecto (MVC)
 
 La arquitectura está distribuida de forma limpia e intuitiva en las siguientes carpetas:
 
@@ -55,34 +55,34 @@ ACA Hotel luna azul/
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
-### 🔒 1. Seguridad y Arquitectura DTO (Data Transfer Object)
+### 1. Seguridad y Arquitectura DTO (Data Transfer Object)
 * **Protección contra IDOR / Enumeración**: La aplicación **no expone los IDs numéricos autoincrementables** de la base de datos en las URLs ni en los formularios. En su lugar, el sistema genera y utiliza **UUIDs** (identificadores únicos aleatorios de 36 caracteres) mapeados mediante DTOs para referenciar tanto huéspedes como reservas de forma pública.
 * **Control de Sesiones**: Las páginas internas están protegidas; si un usuario no autenticado intenta acceder a ellas, es redirigido automáticamente a la pantalla de login. Las contraseñas en base de datos se guardan encriptadas con el algoritmo seguro `BCRYPT`.
 
-### 👥 2. Módulo de Huéspedes (CRUD Completo)
+### 2. Módulo de Huéspedes (CRUD Completo)
 * Almacenamiento de todos los campos solicitados: Nombre completo, tipo y número de documento, dirección, teléfonos, edad, correo electrónico, contacto de emergencia y parentesco.
 * Filtro de búsqueda en tiempo real mediante JavaScript en la tabla de listado.
 
-### 📅 3. Módulo de Reservas e Impedimento de Dobles Asignaciones
+### 3. Módulo de Reservas e Impedimento de Dobles Asignaciones
 * **Asignación por Habitación Física**: Permite reservar habitaciones por número físico específico.
 * **Validación de Fechas**: Se impide que el check-in sea anterior al día de hoy, o que el check-out sea anterior o igual al check-in.
 * **Control de Salidas y Entradas**: Los check-outs son a las 10:00 AM y los check-ins a las 12:00 PM. El sistema permite registrar una nueva entrada el mismo día en que sale otra reserva en la misma habitación sin causar conflicto de disponibilidad.
 * **Prevención de Doble Reserva (Algoritmo de Solapamiento)**: Al elegir fechas, el backend valida mediante intervalos excluyentes si la habitación está reservada.
 * **Carga Dinámica Asíncrona (AJAX)**: Al elegir las fechas de ingreso y salida, el selector de habitaciones se actualiza automáticamente trayendo **únicamente las habitaciones libres** para ese rango de fechas.
 
-### 👥 4. Reglas de Capacidad Máxima
+### 4. Reglas de Capacidad Máxima
 Para evitar la sobreocupación, el sistema valida (en JS en tiempo real y en PHP al guardar) la capacidad permitida por habitación:
 * **Sencilla**: Máximo 1 persona.
 * **Doble**: Máximo 2 personas.
 * **Suite**: Máximo 4 personas.
 * **Familiar**: Máximo 6 personas.
 
-### 💬 5. Registro Rápido con `<dialog>` de HTML5
+### 5. Registro Rápido con `<dialog>` de HTML5
 Si al momento de crear una reserva el huésped no está registrado en el sistema, el usuario puede abrir el modal interactivo nativo (usando la etiqueta `<dialog>` de HTML5, compatible con accesibilidad). El modal registra al huésped por AJAX y lo selecciona automáticamente en el formulario de reserva sin recargar la página.
 
-### 🐍 6. Reporte Analítico con Python 3
+### 6. Reporte Analítico con Python 3
 En el dashboard hay una sección dedicada a la analítica de datos. Al presionar **Generar Reporte Analítico**:
 1. PHP exporta de forma segura los datos de reservas activos a un archivo temporal JSON.
 2. PHP ejecuta en segundo plano el script `report.py` en Python.
@@ -91,7 +91,7 @@ En el dashboard hay una sección dedicada a la analítica de datos. Al presionar
 
 ---
 
-## ⚙️ Instrucciones de Instalación y Despliegue
+## Instrucciones de Instalación y Despliegue
 
 ### Requisitos Previos:
 * Servidor web con PHP 7.4 o superior (con extensión `PDO` y `pdo_mysql` activas).
